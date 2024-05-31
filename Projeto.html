@@ -27,9 +27,17 @@
         padding: 16px 32px; /* Ajuste o preenchimento conforme necessário */
     }
 
-    /* Estilo para o modal */
-    .modal-dialog {
-        max-width: 800px;
+    /* Estilo para a caixa de texto */
+    .custom-message {
+        position: absolute;
+        top: 300px; /* Distância do topo ajustada */
+        left: 50%; /* Centralizado horizontalmente */
+        transform: translateX(-50%); /* Centralizado horizontalmente */
+        background-color: white;
+        padding: 20px;
+        border: 2px solid black;
+        border-radius: 10px;
+        z-index: 9999;
     }
    
 </style>
@@ -37,8 +45,11 @@
 </head>
 <body>
     <p></p>
-    <h1>Teste de site</h1>
-    
+    <h1>Quer ficar comigo PATOdavida?❤</h1>
+    <center> <img id="firstImage" src="https://media.tenor.com/ORwVOmkKdYEAAAAi/pato-caminando.gif" alt="" height="200px"></center>
+    <center><img id="secondImage" src="https://media.tenor.com/3OnwqAIT5lcAAAAi/subaru-duck-dance-smooth.gif" alt="" height="200px" style="display: none;"></center>
+    <center><img id="thirdImage" src="https://media1.tenor.com/m/8EtIRErgJk4AAAAd/ugly-duckling-crying-ducks.gif" alt="" height="200px" style="display: none;"></center>
+
     <div class="position-absolute top-50 start-50 translate-middle">
     <center>
     <!-- Adicionando a classe btn-large aos botões -->
@@ -48,6 +59,9 @@
     <button id="btn-nao" type="button" class="btn btn-outline-danger btn-large">NÃO</button>
     </center>
     </div>
+
+<!-- Caixa de texto -->
+<div id="customMessage" class="custom-message" style="display: none;"></div>
 
 <!-- Modal para exibir o vídeo do YouTube -->
 <div class="modal fade" id="youtubeModal" tabindex="-1" aria-labelledby="youtubeModalLabel" aria-hidden="true">
@@ -64,9 +78,29 @@
 
 <!-- Script JavaScript para fazer o botão "NÃO" fugir -->
 <script>
+    var naoClickCount = 0;
+
     document.getElementById('btn-nao').addEventListener('click', function() {
-        // Define um valor aleatório para a posição do botão "NÃO"
-        var randomX = Math.random() * (window.innerWidth - 200); // 200 é a largura do botão
+        naoClickCount++;
+        
+        if (naoClickCount === 3) {
+            document.getElementById('customMessage').innerText = 'Não tem essa opção vida, não insista😎💍';
+            document.getElementById('customMessage').style.display = 'block';
+            
+            // Exibir a segunda imagem e ocultar a primeira
+            document.getElementById('firstImage').style.display = 'none';
+            document.getElementById('secondImage').style.display = 'block';
+        } else if (naoClickCount === 6) {
+            document.getElementById('customMessage').innerText = 'Você não me ama mais? Clica no sim... Se não vou chorar😪';
+            document.getElementById('customMessage').style.display = 'block';
+            
+            // Exibir a terceira imagem e ocultar a segunda
+            document.getElementById('secondImage').style.display = 'none';
+            document.getElementById('thirdImage').style.display = 'block';
+        }
+        
+                // Define um valor aleatório para a posição do botão "NÃO"
+                var randomX = Math.random() * (window.innerWidth - 200); // 200 é a largura do botão
         var randomY = Math.random() * (window.innerHeight - 200); // 200 é a altura do botão
 
         // Define a nova posição do botão "NÃO"
@@ -84,8 +118,6 @@
     });
 </script>
 
-<!-- Bootstrap JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-
 </body>
 </html>
+
