@@ -26,6 +26,11 @@
         font-size: 24px; /* Defina o tamanho desejado aqui */
         padding: 16px 32px; /* Ajuste o preenchimento conforme necessário */
     }
+
+    /* Estilo para o modal */
+    .modal-dialog {
+        max-width: 800px;
+    }
    
 </style>
 
@@ -44,29 +49,42 @@
     </center>
     </div>
 
+<!-- Modal para exibir o vídeo do YouTube -->
+<div class="modal fade" id="youtubeModal" tabindex="-1" aria-labelledby="youtubeModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item" id="youtubeVideo" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Script JavaScript para fazer o botão "NÃO" fugir -->
 <script>
-    // Função para mover o botão "NÃO" para uma posição aleatória
-    function moveButtonNao() {
+    document.getElementById('btn-nao').addEventListener('click', function() {
+        // Define um valor aleatório para a posição do botão "NÃO"
         var randomX = Math.random() * (window.innerWidth - 200); // 200 é a largura do botão
         var randomY = Math.random() * (window.innerHeight - 200); // 200 é a altura do botão
 
         // Define a nova posição do botão "NÃO"
+        document.getElementById('btn-nao').style.position = 'absolute';
         document.getElementById('btn-nao').style.left = randomX + 'px';
         document.getElementById('btn-nao').style.top = randomY + 'px';
-    }
+    });
 
-    // Chamando a função moveButtonNao() quando o botão "NÃO" é clicado
-    document.getElementById('btn-nao').addEventListener('click', moveButtonNao);
-
-    // Função para abrir o vídeo do YouTube em uma nova aba ao clicar no botão "SIM"
+    // Adicionando função para abrir o modal com o vídeo do YouTube ao clicar no botão "SIM"
     document.getElementById('btn-sim').addEventListener('click', function() {
-        // URL do vídeo do YouTube
-        var videoUrl = 'https://www.youtube.com/watch?v=R8s6fIccm-I&list=RDR8s6fIccm-I&start_radio=1';
-        // Abrir o vídeo em uma nova aba
-        window.open(videoUrl, '_blank');
+        var youtubeVideoUrl = 'https://www.youtube.com/embed/R8s6fIccm-I?autoplay=1';
+        document.getElementById('youtubeVideo').src = youtubeVideoUrl;
+        $('#youtubeModal').modal('show');
     });
 </script>
+
+<!-- Bootstrap JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 
 </body>
 </html>
