@@ -44,10 +44,10 @@
     </center>
     </div>
 
-<!-- Script JavaScript para fazer o botão "NÃO" atualizar sua posição na tela -->
+<!-- Script JavaScript para fazer o botão "NÃO" fugir -->
 <script>
-    // Função para atualizar a posição do botão "NÃO" na tela
-    function updateButtonPosition() {
+    // Função para mover o botão "NÃO" para uma posição aleatória
+    function moveButtonNao() {
         var randomX = Math.random() * (window.innerWidth - 200); // 200 é a largura do botão
         var randomY = Math.random() * (window.innerHeight - 200); // 200 é a altura do botão
 
@@ -56,16 +56,13 @@
         document.getElementById('btn-nao').style.top = randomY + 'px';
     }
 
-    // Chamando a função updateButtonPosition() para atualizar a posição do botão "NÃO" inicialmente
-    updateButtonPosition();
+    // Chamando a função moveButtonNao() quando o botão "NÃO" é clicado
+    document.getElementById('btn-nao').addEventListener('click', moveButtonNao);
 
-    // Adicionando função para atualizar a posição do botão "NÃO" ao redimensionar a janela
-    window.addEventListener('resize', updateButtonPosition);
-
-    // Adicionando função para abrir o vídeo do YouTube em uma nova aba ao clicar no botão "SIM"
+    // Função para abrir o vídeo do YouTube em uma nova aba ao clicar no botão "SIM"
     document.getElementById('btn-sim').addEventListener('click', function() {
         // URL do vídeo do YouTube
-        var videoUrl = 'https://youtu.be/5j0NWL5Tu3s?si=D5cvzhaN2rmlEkN1';
+        var videoUrl = 'https://www.youtube.com/watch?v=R8s6fIccm-I&list=RDR8s6fIccm-I&start_radio=1';
         // Abrir o vídeo em uma nova aba
         window.open(videoUrl, '_blank');
     });
