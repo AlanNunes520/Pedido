@@ -97,6 +97,9 @@
             // Exibir a terceira imagem e ocultar a segunda
             document.getElementById('secondImage').style.display = 'none';
             document.getElementById('thirdImage').style.display = 'block';
+        } else if (naoClickCount === 9) {
+            // Reiniciar a página ao clicar pela 9ª vez no botão "Não"
+            window.location.reload();
         }
         
                 // Define um valor aleatório para a posição do botão "NÃO"
@@ -120,4 +123,3 @@
 
 </body>
 </html>
-
